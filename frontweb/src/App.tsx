@@ -1,9 +1,14 @@
+import './assets/styles/custom.scss';
 import './App.css';
 
-function App() {
+import Catalog from 'pages/Catalog';
+
+const App = () => {
   return (
-    <h1>Olá Dscatalog</h1>
+    <>
+      <Catalog />
+    </>
   );
-}
+};
 
 export default App;
