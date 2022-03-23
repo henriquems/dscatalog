@@ -14,7 +14,7 @@ const Catalog = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const params: AxiosRequestConfig = {
+    const config: AxiosRequestConfig = {
       method: 'GET',
       url: "/products",
       params: {
@@ -25,7 +25,7 @@ const Catalog = () => {
 
     setIsLoading(true);
 
-    requestBackend(params)
+    requestBackend(config)
       .then((response) => {
         setPage(response.data);
       })

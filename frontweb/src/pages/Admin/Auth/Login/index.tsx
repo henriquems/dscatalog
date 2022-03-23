@@ -8,7 +8,7 @@ import { saveAuthData } from 'util/storage';
 import { getTokenData } from 'util/auth';
 import './styles.css';
 
-type FormData = {
+type CredentialsDTO = {
   username: string;
   password: string;
 }
@@ -26,11 +26,11 @@ const Login = () => {
 
   const [hasErro, setHasErro] = useState(false);
   
-  const { register, handleSubmit, formState: {errors} } = useForm<FormData>();
+  const { register, handleSubmit, formState: {errors} } = useForm<CredentialsDTO>();
 
   const history = useHistory();
 
-  const onSubmit = (formData: FormData) => {
+  const onSubmit = (formData: CredentialsDTO) => {
     requestBackendLogin(formData)
       .then((response) => {
         saveAuthData(response.data);
