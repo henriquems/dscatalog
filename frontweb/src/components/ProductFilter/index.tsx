@@ -7,12 +7,16 @@ import { requestBackend } from 'util/requests';
 
 import './styles.css';
 
-type ProdcutFilterData = {
+export type ProdcutFilterData = {
   name: string;
   category: Category | null;
 }
 
-const ProductFilter = () => {
+type Props = {
+  onSubmitFilter : (data: ProdcutFilterData) => void;
+}
+
+const ProductFilter = ( {onSubmitFilter} : Props) => {
   const [selectCategories, setSelectCategories] = useState<Category[]>();
   
   const {
@@ -24,7 +28,7 @@ const ProductFilter = () => {
   } = useForm<ProdcutFilterData>();
 
   const onSubmit = (formData: ProdcutFilterData) => {
-
+    onSubmitFilter(formData);
   }
 
   const handleFormClear = () => {
@@ -39,6 +43,8 @@ const ProductFilter = () => {
       name: getValues('name'),
       category: getValues('category')
     }
+
+    onSubmitFilter(obj);
   }
 
   useEffect(() => {
